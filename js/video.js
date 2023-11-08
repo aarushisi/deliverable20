@@ -4,6 +4,7 @@ window.addEventListener("load", function() {
 	console.log("Good job opening the window")
 
 });
+var volumeDisplay = document.getElementById("volume");
 
 // document.querySelector("#play").addEventListener("click", function() {
 // 	console.log("Play Video");
@@ -22,11 +23,8 @@ playButton.addEventListener("click", function () {
     video.play();
     console.log("Video is playing");
   }
-  if (video.muted) {
-    volumeDisplay.textContent = "0%";
-  } else {
-    volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
-  }
+volumeDisplay.textContent = "100%";
+  
 });
 
 var pauseButton = document.getElementById("pause");
@@ -75,7 +73,6 @@ muteButton.addEventListener("click", function () {
 
 // volume
 var volumeSlider = document.getElementById("slider");
-var volumeDisplay = document.getElementById("volume");
 
 // Update the volume display when the volume slider changes
 volumeSlider.addEventListener("input", function () {
