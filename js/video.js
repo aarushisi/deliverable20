@@ -74,21 +74,20 @@ volumeSlider.addEventListener("input", function () {
 	var volumeValue = volumeSlider.value;
 	video.volume = volumeValue / 100;
 	volumeDisplay.textContent = volumeValue + "%";
-});
+  });
   
   // Update the volume display when the "Mute" button is clicked
-muteButton.addEventListener("click", function () {
+  muteButton.addEventListener("click", function () {
 	if (video.muted) {
 	  video.muted = false;
 	  muteButton.textContent = "Mute";
+	  volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
 	} else {
 	  video.muted = true;
 	  muteButton.textContent = "Unmute";
+	  volumeDisplay.textContent = "0%";
 	}
-  
-	// Update the volume display based on the muted state
-	volumeDisplay.textContent = video.muted ? "0%" : Math.round(video.volume * 100) + "%";
-});
+  });
   
 
 // styled
