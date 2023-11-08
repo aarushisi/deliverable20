@@ -14,7 +14,7 @@ var volumeDisplay = document.getElementById("volume");
 var video = document.getElementById("player1");
 video.autoplay = false;
 video.loop = false;
-// use of chatgot for line 14 & 15
+// use of chatgot for these 2 lines
 
 // play & pause button
 var playButton = document.getElementById("play");
@@ -23,8 +23,6 @@ playButton.addEventListener("click", function () {
     video.play();
     console.log("Video is playing");
   }
-volumeDisplay.textContent = "100%";
-  
 });
 
 var pauseButton = document.getElementById("pause");
@@ -74,13 +72,13 @@ muteButton.addEventListener("click", function () {
 // volume
 var volumeSlider = document.getElementById("slider");
 
+
 // Update the volume display when the volume slider changes
 volumeSlider.addEventListener("input", function () {
 	var volumeValue = volumeSlider.value;
 	video.volume = volumeValue / 100;
 	volumeDisplay.textContent = volumeValue + "%";
   });
-  
 
 function updateVolumeDisplay() {
 	if (video.muted) {
