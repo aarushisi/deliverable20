@@ -13,6 +13,7 @@ window.addEventListener("load", function() {
 var video = document.getElementById("player1");
 video.autoplay = false;
 video.loop = false;
+// use of chatgot for line 14 & 15
 
 // play & pause button
 var playButton = document.getElementById("play");
@@ -77,17 +78,45 @@ volumeSlider.addEventListener("input", function () {
   });
   
   // Update the volume display when the "Mute" button is clicked
+  var muteButton = document.getElementById("mute");
+  video.muted = false;
   muteButton.addEventListener("click", function () {
 	if (video.muted) {
-	  video.muted = false;
-	  muteButton.textContent = "Mute";
-	  volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
+		video.muted = false;
+		muteButton.textContent = "Mute";
 	} else {
-	  video.muted = true;
-	  muteButton.textContent = "Unmute";
-	  volumeDisplay.textContent = "0%";
+		video.muted = true;
+		muteButton.textContent = "Unmute";
 	}
+
+	if (video.muted) {
+		volumeDisplay.textContent = "0%";
+	  } else {
+		volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
+	  }
   });
+
+  // Mute Button
+	muteButton.addEventListener("click", function () {
+		if (video.muted) {
+		video.muted = false;
+		muteButton.textContent = "Mute";
+		} else {
+		video.muted = true;
+		muteButton.textContent = "Unmute";
+		}
+  
+		// Update the volume display
+		if (video.muted) {
+		volumeDisplay.textContent = "0%";
+		} else {
+		volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
+		}
+  });
+  // used chatgpt to help debug and and add extra statements
+  
+
+
   
 
 // styled
@@ -101,7 +130,4 @@ removeOldSchoolButton.addEventListener("click", function () {
   video.classList.remove("oldSchool");
 });
 
-
-
-
-
+// use of chatgpt in debugging errors
