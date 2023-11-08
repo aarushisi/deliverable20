@@ -69,15 +69,39 @@ muteButton.addEventListener("click", function () {
 var volumeSlider = document.getElementById("slider");
 var volumeDisplay = document.getElementById("volume");
 
+// Update the volume display when the volume slider changes
 volumeSlider.addEventListener("input", function () {
-  var volumeValue = volumeSlider.value;
-  video.volume = volumeValue / 100;
-  volumeDisplay.textContent = volumeValue + "%";
+	var volumeValue = volumeSlider.value;
+	video.volume = volumeValue / 100;
+	volumeDisplay.textContent = volumeValue + "%";
 });
+  
+  // Update the volume display when the "Mute" button is clicked
+muteButton.addEventListener("click", function () {
+	if (video.muted) {
+	  video.muted = false;
+	  muteButton.textContent = "Mute";
+	} else {
+	  video.muted = true;
+	  muteButton.textContent = "Unmute";
+	}
+  
+	// Update the volume display based on the muted state
+	volumeDisplay.textContent = video.muted ? "0%" : Math.round(video.volume * 100) + "%";
+});
+  
 
 // styled
-video.classList.add("oldSchool");
-video.classList.remove("oldSchool");
+var addOldSchoolButton = document.getElementById("vintage");
+addOldSchoolButton.addEventListener("click", function () {
+  video.classList.add("oldSchool");
+});
+
+var removeOldSchoolButton = document.getElementById("orig");
+removeOldSchoolButton.addEventListener("click", function () {
+  video.classList.remove("oldSchool");
+});
+
 
 
 
