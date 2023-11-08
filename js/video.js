@@ -22,6 +22,7 @@ playButton.addEventListener("click", function () {
     video.play();
     console.log("Video is playing");
   }
+  updateVolumeDisplay();
 });
 
 var pauseButton = document.getElementById("pause");
