@@ -28,6 +28,7 @@ var pauseButton = document.getElementById("pause");
 pauseButton.addEventListener("click", function () {
   video.pause();
   console.log("Video is paused");
+  updateVolumeDisplay();
 });
 
 // slow down
@@ -64,6 +65,7 @@ muteButton.addEventListener("click", function () {
     video.muted = true;
     muteButton.textContent = "Unmute";
   }
+  updateVolumeDisplay();
 });
 
 // volume
@@ -77,42 +79,14 @@ volumeSlider.addEventListener("input", function () {
 	volumeDisplay.textContent = volumeValue + "%";
   });
   
-  // Update the volume display when the "Mute" button is clicked
-  var muteButton = document.getElementById("mute");
-  video.muted = false;
-  muteButton.addEventListener("click", function () {
+
+function updateVolumeDisplay() {
 	if (video.muted) {
-		video.muted = false;
-		muteButton.textContent = "Mute";
+	  volumeDisplay.textContent = "0%";
 	} else {
-		video.muted = true;
-		muteButton.textContent = "Unmute";
+	  volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
 	}
-
-	if (video.muted) {
-		volumeDisplay.textContent = "0%";
-	  } else {
-		volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
-	  }
-  });
-
-  // Mute Button
-	muteButton.addEventListener("click", function () {
-		if (video.muted) {
-		video.muted = false;
-		muteButton.textContent = "Mute";
-		} else {
-		video.muted = true;
-		muteButton.textContent = "Unmute";
-		}
-  
-		// Update the volume display
-		if (video.muted) {
-		volumeDisplay.textContent = "0%";
-		} else {
-		volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
-		}
-  });
+  }
   // used chatgpt to help debug and and add extra statements
   
 
