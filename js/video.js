@@ -22,7 +22,11 @@ playButton.addEventListener("click", function () {
     video.play();
     console.log("Video is playing");
   }
-  updateVolumeDisplay();
+  if (video.muted) {
+    volumeDisplay.textContent = "0%";
+  } else {
+    volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
+  }
 });
 
 var pauseButton = document.getElementById("pause");
